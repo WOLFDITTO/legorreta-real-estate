@@ -295,6 +295,7 @@ button {
 @media (max-width: 1024px) {
   .nav {
     padding-inline: var(--space-edge-m);
+    justify-content: space-between;
   }
   .nav__links {
     display: none;
@@ -302,9 +303,22 @@ button {
   .nav__hamburger {
     display: flex;
   }
+  .nav__icon-btn:not(.nav__hamburger) {
+    display: none;
+  }
   .nav__brand {
     font-size: 14px;
     letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav__brand {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .portfolio__header {
+    padding-right: 80px;
   }
 }
 
@@ -1386,6 +1400,12 @@ button {
   80% { transform: translate(3%, -1%); }
   90% { transform: translate(-2%, 4%); }
   100%{ transform: translate(1%, -3%); }
+}
+
+@media (hover: none) {
+  .grain {
+    display: none;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════

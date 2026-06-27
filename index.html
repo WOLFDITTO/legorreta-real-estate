@@ -660,7 +660,8 @@
 
       function tick(time) {
         if (lastTime !== null && !paused) {
-          pos += SPEED * (time - lastTime) / 1000;
+          const dt = Math.min(time - lastTime, 100);
+          pos += SPEED * dt / 1000;
           const half = halfWidth();
           if (pos >= half) pos -= half;
           track.style.transform = 'translateX(-' + pos + 'px)';
