@@ -56,6 +56,8 @@
       </button>
     </div>
 
+    <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+
   </nav>
 
   <!-- ── Hero Section ───────────────────────────────────── -->
@@ -578,10 +580,14 @@
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
 
-    // ── Nav shrink (via Lenis) ───────────────────────────
+    // ── Nav scroll: solid bg + progress bar ─────────────
     const nav = document.getElementById('nav');
+    const navProgress = document.getElementById('navProgress');
     lenis.on('scroll', ({ scroll }) => {
       nav.classList.toggle('scrolled', scroll > 60);
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const pct = maxScroll > 0 ? (scroll / maxScroll) * 100 : 0;
+      navProgress.style.width = pct + '%';
     });
 
     // ── 2. Hero video parallax ───────────────────────────

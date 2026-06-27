@@ -191,16 +191,26 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(244, 241, 234, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-outline);
-  transition: height var(--transition-base), box-shadow var(--transition-base);
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: height 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
 }
 
 .nav.scrolled {
   height: 64px;
-  box-shadow: 0 1px 0 var(--color-outline);
+  background-color: var(--color-background);
+  border-bottom-color: var(--color-outline);
+}
+
+.nav__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: var(--color-accent);
+  transition: width 0.08s linear;
+  pointer-events: none;
 }
 
 .nav__links {
@@ -216,10 +226,14 @@ button {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-on-surface-muted);
-  transition: color var(--transition-base);
+  color: rgba(244, 241, 234, 0.75);
+  transition: color 0.35s ease;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
+}
+
+.nav.scrolled .nav__link {
+  color: var(--color-on-surface-muted);
 }
 
 .nav__link:hover {
@@ -241,6 +255,11 @@ button {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   white-space: nowrap;
+  color: var(--color-background);
+  transition: color 0.35s ease;
+}
+
+.nav.scrolled .nav__brand {
   color: var(--color-on-surface);
 }
 
@@ -251,13 +270,17 @@ button {
 }
 
 .nav__icon-btn {
-  color: var(--color-on-surface-muted);
-  transition: color var(--transition-base);
+  color: rgba(244, 241, 234, 0.75);
+  transition: color 0.35s ease;
   background: none;
   border: none;
   padding: 4px;
   display: flex;
   align-items: center;
+}
+
+.nav.scrolled .nav__icon-btn {
+  color: var(--color-on-surface-muted);
 }
 
 .nav__icon-btn:hover {
