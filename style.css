@@ -530,25 +530,17 @@ button {
   overflow: hidden;
   margin-left: calc(-1 * var(--space-edge));
   width: calc(100% + var(--space-edge) * 2);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .carousel__track {
   display: flex;
   gap: 4px;
   width: max-content;
-  animation: scroll-left 66s linear infinite;
   will-change: transform;
-}
-
-@media (hover: hover) {
-  .carousel__track:hover {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes scroll-left {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @media (max-width: 1024px) {

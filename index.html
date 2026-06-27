@@ -595,7 +595,36 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal, .reveal-fade').forEach(el => revealObserver.observe(el));
 
-    // ── 6. Stats counter ─────────────────────────────────
+    // ── 6. Carousel rAF animation ────────────────────────
+    (function initCarousel() {
+      const track = document.querySelector('.carousel__track');
+      if (!track) return;
+      const SPEED = 52; // px per second
+      const halfWidth = () => track.scrollWidth / 2;
+      let pos = 0;
+      let paused = false;
+      let lastTime = null;
+
+      // Pause on hover only for pointer devices
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        track.addEventListener('mouseenter', () => { paused = true; });
+        track.addEventListener('mouseleave', () => { paused = false; });
+      }
+
+      function tick(time) {
+        if (lastTime !== null && !paused) {
+          pos += SPEED * (time - lastTime) / 1000;
+          const half = halfWidth();
+          if (pos >= half) pos -= half;
+          track.style.transform = 'translateX(-' + pos + 'px)';
+        }
+        lastTime = time;
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+
+    // ── 7. Stats counter ─────────────────────────────────
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
