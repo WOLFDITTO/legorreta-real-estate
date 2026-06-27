@@ -254,7 +254,7 @@
         <span class="stats__label">Años de Trayectoria</span>
       </div>
 
-      <div class="stats__item reveal">
+      <div class="stats__item stats__item--center reveal">
         <span class="stats__number" data-count="5000">5,000+</span>
         <span class="stats__label">Transacciones Realizadas</span>
       </div>
@@ -264,6 +264,29 @@
         <span class="stats__label">En Inversión Generada (MXN)</span>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ── El Caribe Section ────────────────────────────── -->
+  <section class="section-gap caribe" id="caribe-inversiones">
+    <div class="container">
+      <div class="caribe__editorial reveal">
+        <div>
+          <span class="text-section-header caribe__label">El Epicentro del Lujo</span>
+        </div>
+        <div class="caribe__text-col">
+          <h2 class="text-headline">El Caribe Mexicano: Plusvalía, Legado y Estilo de Vida.</h2>
+          <p class="text-body-lg caribe__body">La región del Caribe Mexicano se ha consolidado como el destino de inversión más resiliente y dinámico de América Latina. Cancún, Riviera Maya y Tulum no solo ofrecen un entorno natural incomparable, sino un ecosistema financiero sólido donde la plusvalía se entrelaza con un estilo de vida sofisticado, garantizando que cada propiedad sea un activo de legado para las generaciones venideras.</p>
+        </div>
+      </div>
+    </div>
+    <div class="caribe__banner reveal-fade">
+      <img
+        class="caribe__banner-img"
+        src="FOTOS USABLES/hf_20260627_004801_e959fcad-6982-4bfc-96c6-455f7f6799a8.png"
+        alt="Residencia de lujo frente al mar Caribe al atardecer"
+        loading="lazy"
+      />
     </div>
   </section>
 
@@ -460,6 +483,23 @@
     </svg>
     <span class="whatsapp-btn__label">WhatsApp</span>
   </a>
+
+  <!-- ── Hero video crossfade ─────────────────────────── -->
+  <script>
+    (function() {
+      const vid = document.querySelector('.hero__video');
+      if (!vid) return;
+      vid.addEventListener('timeupdate', function() {
+        if (!vid.duration || isNaN(vid.duration)) return;
+        if (vid.currentTime >= vid.duration - 0.4) {
+          vid.style.opacity = '0';
+        }
+      });
+      vid.addEventListener('seeked', function() {
+        vid.style.opacity = '1';
+      });
+    })();
+  </script>
 
   <!-- ── Lenis smooth scroll ──────────────────────────── -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
