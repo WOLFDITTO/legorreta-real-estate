@@ -143,6 +143,24 @@ button {
   margin-top: var(--space-section);
 }
 
+@media (max-width: 1024px) {
+  .container {
+    padding-inline: var(--space-edge-m);
+  }
+  .section-gap {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-gap {
+    margin-top: 72px;
+  }
+  .text-body-lg {
+    font-size: 16px;
+  }
+}
+
 /* Anchor offset for fixed nav (80px height) */
 [id] {
   scroll-margin-top: 96px;
@@ -455,13 +473,19 @@ button {
   margin-top: 48px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .vision {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
+  .vision__image-col {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
   .vision__photo {
-    height: 260px;
+    height: 280px;
   }
 }
 
@@ -516,13 +540,22 @@ button {
   will-change: transform;
 }
 
-.carousel__track:hover {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .carousel__track:hover {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes scroll-left {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 1024px) {
+  .carousel__track-wrap {
+    margin-left: calc(-1 * var(--space-edge-m));
+    width: calc(100% + var(--space-edge-m) * 2);
+  }
 }
 
 /* Property Card */
@@ -668,7 +701,7 @@ button {
   color: var(--color-on-surface-muted);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .stats__grid {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -895,15 +928,6 @@ button {
   .contact {
     grid-template-columns: 1fr;
     gap: 48px;
-  }
-  .contact__form-wrap {
-    padding: 40px 32px;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact__form-wrap {
-    padding: 32px 20px;
   }
 }
 
@@ -1327,16 +1351,35 @@ body.cursor-hover .cursor-follower {
 @media (max-width: 768px) {
   .property-card {
     flex: 0 0 78vw;
-    height: 460px;
-  }
-
-  .section-gap {
-    margin-top: var(--space-section-m);
+    height: 440px;
   }
 
   .portfolio__header {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+}
+
+/* Small phone overrides */
+@media (max-width: 480px) {
+  .hero {
+    padding-bottom: 56px;
+  }
+  .hero__subtitle {
+    font-size: 15px;
+  }
+  .mobile-menu__link {
+    font-size: 28px;
+  }
+  .footer__links-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .stats__number {
+    font-size: 44px;
+  }
+  .sector-card__img-wrap {
+    aspect-ratio: 16 / 9;
   }
 }
